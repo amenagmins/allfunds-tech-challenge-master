@@ -1,0 +1,13 @@
+.products-list {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-container {
+  margin-left: 11px;
+  margin-right: 11px;
+  margin-top: 22px;
+  width: calc(calc(100% / 4) - 22px);
+}

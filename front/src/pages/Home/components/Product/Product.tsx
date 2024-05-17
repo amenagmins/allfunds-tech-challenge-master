@@ -1,7 +1,7 @@
 import React from "react";
 import "./product.css";
-import favIconRegular from "../../icons/heart-regular.svg";
-import favIconSolid from "../../icons/heart-solid.svg";
+import favIconRegular from "../../../../icons/heart-regular.svg";
+import favIconSolid from "../../../../icons/heart-solid.svg";
 
 type ProductProps = {
   title: string;
@@ -25,7 +25,9 @@ export const Product = ({
       <header>
         <button
           style={{
-            backgroundImage: `url(${isFav ? favIconSolid : favIconRegular})`,
+            background: `url(${
+              isFav ? favIconSolid : favIconRegular
+            }) no-repeat center center`,
           }}
           className="product__add-fav"
         ></button>
