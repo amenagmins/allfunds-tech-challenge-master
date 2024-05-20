@@ -1,0 +1,46 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-item > header {
+  margin-top: 16px;
+}
+
+.cart-item > header > section {
+  display: flex;
+  flex-direction: row;
+}
+
+.cart-item > header > section > div {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+}
+
+.cart-item > header > section > img {
+  width: 75px;
+  height: auto;
+}
+
+.cart-item__button {
+  border-radius: 100%;
+  border-width: 1.5px;
+  width: 22px;
+  height: 22px;
+  background-color: unset;
+  cursor: pointer;
+}
+
+.cart-item > footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.cart-item > footer > span {
+  margin: 0 8px;
+}

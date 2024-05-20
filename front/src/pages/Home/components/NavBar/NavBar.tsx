@@ -11,13 +11,13 @@ export const NavBar = () => {
         style={{
           background: `url(${favIcon}) no-repeat center center`,
         }}
-        className="navBar__favs"
+        className="navBar__button navBar__favs"
       ></button>
       <button
         style={{
           background: `url(${cartIcon}) no-repeat center center`,
         }}
-        className="navBar__cart"
+        className="navBar__button navBar__cart"
       ></button>
     </nav>
   );

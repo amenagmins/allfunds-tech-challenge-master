@@ -59,4 +59,10 @@
   color: #000000;
   padding: 10px 20px;
   text-decoration: none;
+  transition: 0.5s;
+}
+
+.product__add-cart:hover {
+  padding: 10px 25px;
+  transition: 0.5s;
 }

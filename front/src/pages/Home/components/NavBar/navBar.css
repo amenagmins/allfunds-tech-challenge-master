@@ -10,22 +10,21 @@
   left: 0;
   right: 0;
   background-color: white;
+  z-index: 2;
 }
 
-.navBar__favs {
+.navBar__button {
   border: none;
   width: 25px;
   height: 25px;
   background-color: unset;
   cursor: pointer;
+}
+
+.navBar__favs {
   margin-left: auto;
 }
 
 .navBar__cart {
-  border: none;
-  width: 25px;
-  height: 25px;
-  background-color: unset;
-  cursor: pointer;
   margin-left: 14px;
 }
