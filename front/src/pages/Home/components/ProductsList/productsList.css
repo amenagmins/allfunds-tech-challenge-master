@@ -5,9 +5,33 @@
   flex-wrap: wrap;
 }
 
+.products-list__loading {
+  text-align: center;
+  width: 100%;
+}
+
 .product-container {
   margin-left: 11px;
   margin-right: 11px;
   margin-top: 22px;
   width: calc(calc(100% / 4) - 22px);
+  display: flex;
+}
+
+@media only screen and (max-width: 1200px) {
+  .product-container {
+    width: calc(calc(100% / 3) - 22px);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .product-container {
+    width: calc(calc(100% / 2) - 22px);
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .product-container {
+    width: calc(calc(100% / 1) - 22px);
+  }
 }

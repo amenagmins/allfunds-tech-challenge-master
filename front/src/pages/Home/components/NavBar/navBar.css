@@ -15,10 +15,29 @@
 
 .navBar__button {
   border: none;
-  width: 25px;
-  height: 25px;
+  width: 34px;
+  height: 34px;
   background-color: unset;
   cursor: pointer;
+  position: relative;
+}
+
+.navBar__button > span {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-align: center;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+  border: solid;
+  font-size: 8pt;
+  border-width: 1px;
 }
 
 .navBar__favs {
