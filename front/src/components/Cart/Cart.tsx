@@ -1,9 +1,9 @@
 import React from "react";
 import "./cart.css";
 import { CartItem } from "./components/CartIem/CartItem";
-import closeButton from "../../../../icons/x-solid.svg";
-import { useCartState } from "../../../../providers/cartProvider";
-import { ProductTypeWithQuant } from "../../../../types/commonTypes";
+import closeButton from "../../icons/x-solid.svg";
+import { useCartState } from "../../providers/cartProvider";
+import { ProductTypeWithQuant } from "../../types/commonTypes";
 
 export const Cart = () => {
   const { isShowingCart, setIsShowingCart, cartProducts, totalPrice } =

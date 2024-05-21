@@ -1,9 +1,9 @@
 import React from "react";
 import "./cartItem.css";
-import minusIcon from "../../../../../../icons/minus-solid.svg";
-import plusIcon from "../../../../../../icons/plus-solid.svg";
-import { ProductTypeWithQuant } from "../../../../../../types/commonTypes";
-import { useCartState } from "../../../../../../providers/cartProvider";
+import minusIcon from "../../../../icons/minus-solid.svg";
+import plusIcon from "../../../../icons/plus-solid.svg";
+import { ProductTypeWithQuant } from "../../../../types/commonTypes";
+import { useCartState } from "../../../../providers/cartProvider";
 
 export const CartItem = ({ product }: { product: ProductTypeWithQuant }) => {
   const { removeProductFromCart, increaseProductQuantity } = useCartState();

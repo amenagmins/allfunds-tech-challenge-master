@@ -8,6 +8,7 @@ import { CartStateProvider } from "./providers/cartProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Favs } from "./pages/Favs/Favs";
 import { ScrollArrow } from "./components/ScrollArrow/ScrollArrow";
+import { Cart } from "./components/Cart/Cart";
 
 const queryClient = new QueryClient();
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <CartStateProvider>
           <Router>
             <NavBar />
+            <Cart />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/favs" element={<Favs />} />
