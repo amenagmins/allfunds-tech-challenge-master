@@ -7,6 +7,7 @@ type CartStateType = {
   cartProducts: ProductTypeWithQuant[];
   addProductToCart: (newProduct: ProductType) => void;
   removeProductFromCart: (id: string) => void;
+  increaseProductQuantity: (id: string) => void;
   setIsShowingCart: (isShowingCart: boolean) => void;
   isShowingCart: boolean;
 };
@@ -18,6 +19,7 @@ const defaultCartState: CartStateType = {
   addProductToCart: () => {},
   removeProductFromCart: () => {},
   setIsShowingCart: () => {},
+  increaseProductQuantity: () => {},
   isShowingCart: false,
 };
 
@@ -29,22 +31,33 @@ export const CartStateProvider = ({ children }: { children: ReactNode }) => {
   const [cartProducts, setCartProducts] = useState<ProductTypeWithQuant[]>([]);
   const [isShowingCart, setIsShowingCart] = useState(false);
 
+  const increaseProductQuantity = (id: string) => {
+    const newCart: ProductTypeWithQuant[] = [...cartProducts];
+    const index = newCart.findIndex(
+      (product: ProductTypeWithQuant) => product.id === id
+    );
+    newCart[index].quantity = newCart[index].quantity + 1;
+    setTotalPrice(totalPrice + newCart[index].price);
+    setProductsNumber(productsNumber + 1);
+    setCartProducts(newCart);
+  };
+
   const addProductToCart = (newProduct: ProductType) => {
     const newCart: ProductTypeWithQuant[] = [...cartProducts];
     const index = newCart.findIndex(
       (product: ProductTypeWithQuant) => product.id === newProduct.id
     );
     if (index !== -1) {
-      newCart[index].quantity = newCart[index].quantity + 1;
+      increaseProductQuantity(newProduct.id);
     } else {
       newCart.push({
         ...newProduct,
         quantity: 1,
       });
+      setTotalPrice(totalPrice + newProduct.price);
+      setProductsNumber(productsNumber + 1);
+      setCartProducts(newCart);
     }
-    setTotalPrice(totalPrice + newProduct.price);
-    setProductsNumber(productsNumber + 1);
-    setCartProducts(newCart);
   };
 
   const removeProductFromCart = (id: string) => {
@@ -70,6 +83,7 @@ export const CartStateProvider = ({ children }: { children: ReactNode }) => {
         cartProducts,
         addProductToCart,
         removeProductFromCart,
+        increaseProductQuantity,
         setIsShowingCart,
         isShowingCart,
       }}

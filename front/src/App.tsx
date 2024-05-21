@@ -5,6 +5,8 @@ import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CartStateProvider } from "./providers/cartProvider";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Favs } from "./pages/Favs/Favs";
 
 const queryClient = new QueryClient();
 function App() {
@@ -12,8 +14,13 @@ function App() {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <CartStateProvider>
-          <NavBar />
-          <Home />
+          <Router>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favs" element={<Favs />} />
+            </Routes>
+          </Router>
         </CartStateProvider>
         <ReactQueryDevtools />
       </QueryClientProvider>

@@ -1,0 +1,8 @@
+.favs__go-back {
+  margin-top: 70px;
+  border: none;
+  width: 25px;
+  height: 25px;
+  background-color: unset;
+  cursor: pointer;
+}

@@ -3,20 +3,37 @@ import favIcon from "../../../../icons/heart-solid.svg";
 import cartIcon from "../../../../icons/cart-shopping-solid.svg";
 import "./navBar.css";
 import { useCartState } from "../../../../providers/cartProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getFavProducts } from "../../../../api";
+import { ProductType } from "../../../../types/commonTypes";
 
 export const NavBar = () => {
   const { setIsShowingCart, isShowingCart, productsNumber } = useCartState();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["favs"],
+    queryFn: getFavProducts,
+  });
+
+  const favsLength =
+    !isLoading &&
+    data.filter((product: ProductType) => Number(product.favorite) === 1)
+      ?.length;
 
   return (
     <nav className="navBar">
-      <span>Productos</span>
+      <span>{location.pathname === "/favs" ? "Favoritos" : "Productos"}</span>
       <button
         style={{
           background: `url(${favIcon}) no-repeat center center`,
         }}
+        onClick={() => navigate("/favs")}
         className="navBar__button navBar__favs"
       >
-        <span>0</span>
+        <span>{favsLength ? favsLength : 0}</span>
       </button>
       <button
         style={{
@@ -25,7 +42,7 @@ export const NavBar = () => {
         className="navBar__button navBar__cart"
         onClick={() => setIsShowingCart(!isShowingCart)}
       >
-        {!!productsNumber && <span>{productsNumber}</span>}
+        <span>{productsNumber}</span>
       </button>
     </nav>
   );

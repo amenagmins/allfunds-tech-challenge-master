@@ -2,27 +2,11 @@ import React from "react";
 import "./cartItem.css";
 import minusIcon from "../../../../../../icons/minus-solid.svg";
 import plusIcon from "../../../../../../icons/plus-solid.svg";
-import {
-  ProductType,
-  ProductTypeWithQuant,
-} from "../../../../../../types/commonTypes";
+import { ProductTypeWithQuant } from "../../../../../../types/commonTypes";
 import { useCartState } from "../../../../../../providers/cartProvider";
 
 export const CartItem = ({ product }: { product: ProductTypeWithQuant }) => {
-  const { removeProductFromCart, addProductToCart } = useCartState();
-  const handleAddProductToCart = () => {
-    const productToAdd: ProductType = {
-      id: product.id,
-      productName: product.productName,
-      price: product.price,
-      image_url: product.image_url,
-      productDescription: product.productDescription,
-      favorite: product.favorite,
-      stock: product.stock,
-    };
-    addProductToCart(productToAdd);
-  };
-
+  const { removeProductFromCart, increaseProductQuantity } = useCartState();
   return (
     <section className="cart-item">
       <header>
@@ -50,7 +34,7 @@ export const CartItem = ({ product }: { product: ProductTypeWithQuant }) => {
           style={{
             background: `url(${plusIcon}) no-repeat center center`,
           }}
-          onClick={handleAddProductToCart}
+          onClick={() => increaseProductQuantity(product.id)}
         />
       </footer>
     </section>

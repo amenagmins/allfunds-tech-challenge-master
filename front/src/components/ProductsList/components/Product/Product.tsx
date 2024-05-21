@@ -14,8 +14,18 @@ export const Product = ({ product }: { product: ProductType }) => {
     mutationFn: () => updateFav(!product.favorite, product.id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ["favs"] });
     },
   });
+
+  const stockClassName = `product__stock ${
+    product.stock === 0 ? "product__stock--out-of-stock" : ""
+  }`;
+
+  const addCartButtonClassName = `product__add-cart ${
+    product.stock === 0 ? "product__add-cart--disabled" : ""
+  }`;
+
   return (
     <article className="product">
       <header>
@@ -29,15 +39,16 @@ export const Product = ({ product }: { product: ProductType }) => {
           onClick={() => updateFavMutation.mutate()}
         ></button>
         <img alt={product.productName} src={product.image_url} />
-        <p className="product__stock">Quedan {product.stock} unidades</p>
+        <p className={stockClassName}>Quedan {product.stock} unidades</p>
         <p className="product__title">{product.productName}</p>
         <p className="product__description">{product.productDescription}</p>
         <p className="product__price">{product.price}€</p>
       </header>
       <footer>
         <button
+          disabled={product.stock === 0}
           onClick={() => addProductToCart(product)}
-          className="product__add-cart"
+          className={addCartButtonClassName}
         >
           Añadir al carrito
         </button>

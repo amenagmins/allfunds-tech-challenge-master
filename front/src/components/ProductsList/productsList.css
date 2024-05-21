@@ -5,7 +5,7 @@
   flex-wrap: wrap;
 }
 
-.products-list__loading {
+.products-list__message {
   text-align: center;
   width: 100%;
 }

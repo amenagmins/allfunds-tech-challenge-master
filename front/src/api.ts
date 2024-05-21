@@ -3,6 +3,11 @@ export async function getProductsList() {
   return response.json();
 }
 
+export async function getFavProducts() {
+  const response = await fetch(`http://localhost:3000/grocery?favorite=1`);
+  return response.json();
+}
+
 export async function updateFav(isFav: boolean, id: string) {
   const response = await fetch(`http://localhost:3000/grocery/${id}`, {
     method: "PATCH",
