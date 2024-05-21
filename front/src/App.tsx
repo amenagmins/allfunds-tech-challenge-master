@@ -3,10 +3,11 @@ import { Home } from "./pages/Home/Home";
 import { NavBar } from "./pages/Home/components/NavBar/NavBar";
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CartStateProvider } from "./providers/cartProvider";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Favs } from "./pages/Favs/Favs";
+import { ScrollArrow } from "./components/ScrollArrow/ScrollArrow";
 
 const queryClient = new QueryClient();
 function App() {
@@ -22,8 +23,9 @@ function App() {
             </Routes>
           </Router>
         </CartStateProvider>
-        <ReactQueryDevtools />
+        {/* <ReactQueryDevtools /> */}
       </QueryClientProvider>
+      <ScrollArrow />
     </div>
   );
 }
